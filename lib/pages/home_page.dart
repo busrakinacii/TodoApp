@@ -20,7 +20,6 @@ class _HomePageState extends State<HomePage> {
   late List<Task> _allTasks;
   late LocalStorage _localStorage;
 
-
   @override
   void initState() {
     super.initState();
@@ -41,7 +40,7 @@ class _HomePageState extends State<HomePage> {
             _showAddTaskBottomSheet();
           },
           child: const Text(
-            ' title ',
+            ' Yapılıcaklar Listesi ',
             style: TextStyle(color: Colors.black),
           ).tr(),
         ),
@@ -95,7 +94,9 @@ class _HomePageState extends State<HomePage> {
               itemCount: _allTasks.length,
             )
           : Center(
-              child: const Text('add_task').tr(),
+              //child: const Text('add_task').tr(),
+              child: Image.network(
+                  "https://media.istockphoto.com/vectors/man-with-pencil-marking-completed-tasks-on-todo-list-concept-of-time-vector-id1321009109?b=1&k=20&m=1321009109&s=170667a&w=0&h=ANNFPQ6yRfBB02pBzpnECd3K5hnGH2m1XVBzHRJ9kPQ="),
             ),
     );
   }
@@ -117,9 +118,9 @@ class _HomePageState extends State<HomePage> {
               onSubmitted: (value) {
                 Navigator.of(context).pop();
                 if (value.length > 3) {
-                  DatePicker.showTimePicker(context, 
-                  locale: TranslationHelper.getDeviceLanguage(context),
-                  showSecondsColumn: false, onConfirm: (time) async {
+                  DatePicker.showTimePicker(context,
+                      locale: TranslationHelper.getDeviceLanguage(context),
+                      showSecondsColumn: false, onConfirm: (time) async {
                     var yeniEklenencekGorev =
                         Task.create(name: value, createdAt: time);
 
